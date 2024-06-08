@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D615A2DC-0F27-483A-90E5-DC8C10F760CD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{6645655C-ED52-442D-98BC-5254E048534A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backend", "backend", "{3F405098-D21D-42A6-83D3-A2FC4F88D71D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shared", "shared", "{870A6EEB-2797-48C5-8788-37C2B11774C8}"
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3F405098-D21D-42A6-83D3-A2FC4F88D71D} = {D615A2DC-0F27-483A-90E5-DC8C10F760CD}
+		{870A6EEB-2797-48C5-8788-37C2B11774C8} = {D615A2DC-0F27-483A-90E5-DC8C10F760CD}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7709FB1F-08F1-48E3-985F-9B2097E2472E}
+	EndGlobalSection
+EndGlobal
