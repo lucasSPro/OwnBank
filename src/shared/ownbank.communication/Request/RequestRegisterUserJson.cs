@@ -1,4 +1,4 @@
-﻿namespace ownbank.communication.Request
+﻿namespace ownbank.Communication.Request
 {
     public class RequestRegisterUserJson
     {

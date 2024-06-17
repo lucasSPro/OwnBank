@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ownbank.exceptions {
+namespace ownbank.Exceptions {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace ownbank.exceptions {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ownbank.exceptions.ResourceMessagesExceptions", typeof(ResourceMessagesExceptions).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ownbank.Exceptions.ResourceMessagesExceptions", typeof(ResourceMessagesExceptions).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

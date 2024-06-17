@@ -1,4 +1,4 @@
-﻿namespace ownbank.communication.Responses
+﻿namespace ownbank.Communication.Responses
 {
     public class ResponseRegisteredUserJson
     {

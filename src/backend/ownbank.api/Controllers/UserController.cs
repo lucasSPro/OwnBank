@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ownbank.communication.Request;
-using ownbank.communication.Responses;
-using ownbank.application.UseCases.Register;
+using ownbank.Communication.Request;
+using ownbank.Communication.Responses;
+using ownbank.Application.UseCases.Register;
 
-namespace ownbank.api.Controllers
+namespace ownbank.Api.Controllers
 {
     [Route("[controller]")]
     [ApiController]
@@ -11,11 +11,14 @@ namespace ownbank.api.Controllers
     {
         [HttpPost]
         [ProducesResponseType(typeof(ResponseRegisteredUserJson),StatusCodes.Status201Created)]
-        public IActionResult Register( RequestRegisterUserJson request)
+        public async Task<IActionResult> Register(
+            [FromServices] IRegisterUserUseCase useCase,
+            [FromBody]RequestRegisterUserJson request
+            )
         {
-            var useCase = new RegisterUserUseCase();
+           
 
-            var result = useCase.Execute(request);   
+            var result = await useCase.Execute(request);   
 
             return Created(string.Empty, result);
         }

@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using ownbank.exceptions.ExceptionBase;
-using ownbank.communication.Responses;
+using ownbank.Communication.Responses;
+using ownbank.Exceptions;
+using ownbank.Exceptions.ExceptionBase;
 using System.Net;
-using System;
-using ownbank.exceptions;
 
-namespace ownbank.api.Filters
+namespace ownbank.Api.Filters
 {
     public class ExceptionFilter : IExceptionFilter
     {

@@ -1,9 +1,9 @@
 ﻿
 
 using AutoMapper;
-using ownbank.communication.Request;
+using ownbank.Communication.Request;
 
-namespace ownbank.application.Services.AutoMapper
+namespace ownbank.Application.Services.AutoMapper
 {
     public class AutoMapping : Profile
     {
@@ -15,7 +15,7 @@ namespace ownbank.application.Services.AutoMapper
 
         private void RequestToDomain()
         {
-            CreateMap<RequestRegisterUserJson, domain.Entities.User>();
+            CreateMap<RequestRegisterUserJson, Domain.Entities.User>();
         }
     }
 }

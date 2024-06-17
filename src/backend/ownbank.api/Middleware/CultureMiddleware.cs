@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace ownbank.api.Middleware
+namespace ownbank.Api.Middleware
 {
     public class CultureMiddleware
     {

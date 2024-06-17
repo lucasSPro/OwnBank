@@ -17,9 +17,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\shared\ownbank.communication\ownbank.communication.csproj" />
-    <ProjectReference Include="..\..\shared\ownbank.exceptions\ownbank.exceptions.csproj" />
-    <ProjectReference Include="..\ownbank.application\ownbank.application.csproj" />
+    <ProjectReference Include="..\..\shared\ownbank.communication\ownbank.Communication.csproj" />
+    <ProjectReference Include="..\..\shared\ownbank.exceptions\ownbank.Exceptions.csproj" />
+    <ProjectReference Include="..\ownbank.application\ownbank.Application.csproj" />
+    <ProjectReference Include="..\ownbank.infrastructure\ownbank.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

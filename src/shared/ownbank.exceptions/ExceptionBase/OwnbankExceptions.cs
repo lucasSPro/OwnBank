@@ -1,4 +1,4 @@
-﻿namespace ownbank.exceptions.ExceptionBase
+﻿namespace ownbank.Exceptions.ExceptionBase
 {
     public class OwnbankExceptions: SystemException
     {

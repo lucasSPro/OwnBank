@@ -1,6 +1,4 @@
-﻿using System.Collections;
-
-namespace ownbank.exceptions.ExceptionBase
+﻿namespace ownbank.Exceptions.ExceptionBase
 {
     public class ErrorOnValidationException : OwnbankExceptions
     {

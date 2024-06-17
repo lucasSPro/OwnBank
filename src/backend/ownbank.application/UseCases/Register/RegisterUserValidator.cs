@@ -1,10 +1,10 @@
 ﻿
 
 using FluentValidation;
-using ownbank.communication.Request;
-using ownbank.exceptions;
+using ownbank.Communication.Request;
+using ownbank.Exceptions;
 
-namespace ownbank.application.UseCases.Register
+namespace ownbank.Application.UseCases.Register
 {
     public class RegisterUserValidator: AbstractValidator<RequestRegisterUserJson>
     {

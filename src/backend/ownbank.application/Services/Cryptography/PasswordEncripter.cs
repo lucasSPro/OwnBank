@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace ownbank.application.Services.Cryptography
+namespace ownbank.Application.Services.Cryptography
 {
     public class PasswordEncripter
     {

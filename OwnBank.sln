@@ -11,17 +11,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backend", "backend", "{3F40
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shared", "shared", "{870A6EEB-2797-48C5-8788-37C2B11774C8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ownbank.api", "src\backend\ownbank.api\ownbank.api.csproj", "{28488902-1312-452D-B803-BA45220E5774}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ownbank.Api", "src\backend\ownbank.api\ownbank.Api.csproj", "{28488902-1312-452D-B803-BA45220E5774}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ownbank.application", "src\backend\ownbank.application\ownbank.application.csproj", "{C4F5AF9B-6A7A-432B-88D0-F6845A301CE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ownbank.Application", "src\backend\ownbank.application\ownbank.Application.csproj", "{C4F5AF9B-6A7A-432B-88D0-F6845A301CE1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ownbank.infrastructure", "src\backend\ownbank.infrastructure\ownbank.infrastructure.csproj", "{5004C026-AB0C-47D6-B10A-BA960DE16312}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ownbank.Infrastructure", "src\backend\ownbank.infrastructure\ownbank.Infrastructure.csproj", "{5004C026-AB0C-47D6-B10A-BA960DE16312}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ownbank.domain", "src\backend\ownbank.domain\ownbank.domain.csproj", "{607716F9-1C09-4C2D-8C8F-10DBC9F22914}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ownbank.Domain", "src\backend\ownbank.domain\ownbank.Domain.csproj", "{607716F9-1C09-4C2D-8C8F-10DBC9F22914}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ownbank.communication", "src\shared\ownbank.communication\ownbank.communication.csproj", "{0DE88A2A-DFF3-4661-909C-C890573224E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ownbank.Communication", "src\shared\ownbank.communication\ownbank.Communication.csproj", "{0DE88A2A-DFF3-4661-909C-C890573224E1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ownbank.exceptions", "src\shared\ownbank.exceptions\ownbank.exceptions.csproj", "{708E179E-E1E9-4744-B270-0F54C274D5B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ownbank.Exceptions", "src\shared\ownbank.exceptions\ownbank.Exceptions.csproj", "{708E179E-E1E9-4744-B270-0F54C274D5B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
