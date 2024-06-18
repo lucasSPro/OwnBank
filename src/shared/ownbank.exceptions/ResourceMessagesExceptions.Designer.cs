@@ -70,6 +70,15 @@ namespace ownbank.Exceptions {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Email existing..
+        /// </summary>
+        public static string EMAIL_EXISTING {
+            get {
+                return ResourceManager.GetString("EMAIL_EXISTING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a The email address is invalid..
         /// </summary>
         public static string EMAIL_VALID {

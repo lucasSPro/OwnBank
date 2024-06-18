@@ -120,6 +120,9 @@
   <data name="EMAIL_EMPTY" xml:space="preserve">
     <value>The email must not be empty.</value>
   </data>
+  <data name="EMAIL_EXISTING" xml:space="preserve">
+    <value>Email existing.</value>
+  </data>
   <data name="EMAIL_VALID" xml:space="preserve">
     <value>The email address is invalid.</value>
   </data>

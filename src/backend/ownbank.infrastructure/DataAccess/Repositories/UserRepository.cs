@@ -22,7 +22,7 @@ namespace ownbank.Infrastructure.DataAccess.Repositories
 
         public async Task<bool> ExistActiveUserWithEmail(string email)
         {
-            return await _dbContext.Users.AnyAsync(user => user.Email.Equals(email) && user.Active);
+            return await _dbContext.Users.AnyAsync(user => user.Email.Equals(email) );
         }
     }
 }

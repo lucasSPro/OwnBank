@@ -2,6 +2,7 @@
 using ownbank.Application.Services.Cryptography;
 using ownbank.Communication.Request;
 using ownbank.Domain.Repositories.User;
+using ownbank.Exceptions;
 using ownbank.Exceptions.ExceptionBase;
 
 
@@ -28,7 +29,7 @@ namespace ownbank.Application.UseCases.Register
         public async Task<RequestRegisterUserJson> Execute(RequestRegisterUserJson request)
         {
 
-            Validate(request);
+            await Validate(request);
 
             var user =  _mapper.Map<Domain.Entities.User>(request);
 
@@ -39,10 +40,17 @@ namespace ownbank.Application.UseCases.Register
             return new RequestRegisterUserJson { Name = request.Name };
         }
 
-        private void Validate(RequestRegisterUserJson request)
+        private async Task Validate(RequestRegisterUserJson request)
         {
             var validator = new RegisterUserValidator();
             var result = validator.Validate(request);
+
+            var emailExist = await _userReadOnlyRepository.ExistActiveUserWithEmail(request.Email);
+
+            if (emailExist)
+            {
+                result.Errors.Add(new FluentValidation.Results.ValidationFailure(string.Empty, ResourceMessagesExceptions.EMAIL_EXISTING));
+            }
 
             if (!result.IsValid)
             {
