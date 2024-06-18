@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using ownbank.Application.Services.AutoMapper;
+using ownbank.Application.Services.Cryptography;
 using ownbank.Application.UseCases.Register;
 
 namespace ownbank.Application
@@ -9,6 +10,7 @@ namespace ownbank.Application
         public static void AddApplication(this IServiceCollection services)
         {
             AddUseCases(services);
+            PasswordEncrypter(services);
             AddAutoMapper(services);
         }
 
@@ -22,6 +24,11 @@ namespace ownbank.Application
         private static void AddUseCases(IServiceCollection services)
         {
             services.AddScoped<IRegisterUserUseCase,  RegisterUserUseCase>();
+        }
+
+        private static void PasswordEncrypter(IServiceCollection services)
+        {
+            services.AddScoped(option => new PasswordEncripter());
         }
     }
         

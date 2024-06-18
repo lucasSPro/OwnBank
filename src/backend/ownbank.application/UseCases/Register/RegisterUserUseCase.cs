@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using ownbank.Application.Services.AutoMapper;
 using ownbank.Application.Services.Cryptography;
 using ownbank.Communication.Request;
 using ownbank.Domain.Repositories.User;
@@ -12,28 +11,28 @@ namespace ownbank.Application.UseCases.Register
     {
         private readonly IUserReadOnlyRepository _userReadOnlyRepository;
         private readonly IUserWriteOnlyRepository _userWriteOnlyRepository;
+        private readonly PasswordEncripter _passwordEncripter;
         private readonly IMapper _mapper;
         public RegisterUserUseCase(
             IUserReadOnlyRepository userReadOnlyRepository, 
             IUserWriteOnlyRepository userWriteOnlyRepository,
+            PasswordEncripter passwordEncripter,
             IMapper mapper
             )
         {
             _userReadOnlyRepository = userReadOnlyRepository;
             _userWriteOnlyRepository = userWriteOnlyRepository;
             _mapper = mapper;
+            _passwordEncripter = passwordEncripter;
         }
         public async Task<RequestRegisterUserJson> Execute(RequestRegisterUserJson request)
         {
 
             Validate(request);
 
-            var passwordAPI = new PasswordEncripter();
-            
-
             var user =  _mapper.Map<Domain.Entities.User>(request);
 
-            user.Password =  passwordAPI.Encrypt(request.Password);
+            user.Password =  _passwordEncripter.Encrypt(request.Password);
 
             await _userWriteOnlyRepository.Add(user);
            
