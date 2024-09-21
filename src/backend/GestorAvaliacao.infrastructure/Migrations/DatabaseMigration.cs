@@ -8,13 +8,13 @@ namespace GestorAvaliacao.Infrastructure.Migrations
 {
     public static class DatabaseMigration
     {
-        public static void Migrate(string connectionString, DatabaseType databaseType)
+        public static void Migrate(string connectionString, DatabaseEnvironment databaseType)
         {
-            if (databaseType == DatabaseType.MySql)
+            if (databaseType == DatabaseEnvironment.Development)
             {
                 EnsureDatabaseCreatedMySQL(connectionString);
             }
-            else if (databaseType == DatabaseType.SqlServer)
+            else if (databaseType == DatabaseEnvironment.Homologation)
             {
                 EnsureDatabaseCreatedSqlServer(connectionString);
             }

@@ -5,6 +5,7 @@ using GestorAvaliacao.Domain.Enums;
 using GestorAvaliacao.Domain.Repositories.User;
 using GestorAvaliacao.Infrastructure.DataAccess;
 using GestorAvaliacao.Infrastructure.DataAccess.Repositories;
+using GestorAvaliacao.Infrastructure.Extensions;
 
 namespace GestorAvaliacao.Infrastructure
 {
@@ -12,11 +13,9 @@ namespace GestorAvaliacao.Infrastructure
     {
         public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-            var databaseType = configuration.GetConnectionString("DatabaseType");
+            var databaseEnviroment = configuration.DataEnvironment();
 
-            var databaseTypeEnum = (DatabaseType)Enum.Parse(typeof(DatabaseType), databaseType);
-
-            if(databaseTypeEnum == DatabaseType.MySql)
+            if(databaseEnviroment == DatabaseEnvironment.Development)
                 AddDbContext_MySql(services, configuration);
             else
                 AddDbContext_SqlServer(services, configuration);
@@ -26,7 +25,7 @@ namespace GestorAvaliacao.Infrastructure
 
         private static void AddDbContext_SqlServer(IServiceCollection services, IConfiguration configuration)
         {
-            var connectionString = configuration.GetConnectionString("SqlServer");
+            var connectionString = configuration.ConnectionString();
 
             services.AddDbContext<GestorAvaliacaoDBContext>(dbContextOptions =>
             {
@@ -35,7 +34,7 @@ namespace GestorAvaliacao.Infrastructure
         }
         private static void AddDbContext_MySql(IServiceCollection services, IConfiguration configuration)
         {
-            var connectionString = configuration.GetConnectionString("MySql");
+            var connectionString = configuration.ConnectionString();
 
             var serverVersion = new MySqlServerVersion(new Version(8,0,36));
 

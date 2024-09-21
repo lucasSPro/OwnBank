@@ -2,6 +2,8 @@ using GestorAvaliacao.Api.Filters;
 using GestorAvaliacao.Api.Middleware;
 using GestorAvaliacao.Application;
 using GestorAvaliacao.Infrastructure;
+using GestorAvaliacao.Infrastructure.Extensions;
+using GestorAvaliacao.Infrastructure.Migrations;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -35,4 +37,13 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+MigrateDatabase();
+
 app.Run();
+
+void MigrateDatabase()
+{
+    var databaseEnvironment = builder.Configuration.DataEnvironment();
+    var connectionString = builder.Configuration.ConnectionString();
+    DatabaseMigration.Migrate(connectionString, databaseEnvironment);
+}
