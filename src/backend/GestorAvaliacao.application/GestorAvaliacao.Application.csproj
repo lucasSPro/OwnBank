@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="FluentValidation" Version="11.9.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\shared\GestorAvaliacao.communication\GestorAvaliacao.Communication.csproj" />
+    <ProjectReference Include="..\..\shared\GestorAvaliacao.exceptions\GestorAvaliacao.Exceptions.csproj" />
+    <ProjectReference Include="..\..\shared\ownbank.communication\GestorAvaliacao.Communication.csproj" />
+    <ProjectReference Include="..\..\shared\ownbank.exceptions\GestorAvaliacao.Exceptions.csproj" />
+    <ProjectReference Include="..\GestorAvaliacao.domain\GestorAvaliacao.Domain.csproj" />
+    <ProjectReference Include="..\ownbank.domain\GestorAvaliacao.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
