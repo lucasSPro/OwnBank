@@ -6,6 +6,8 @@ using GestorAvaliacao.Domain.Repositories.User;
 using GestorAvaliacao.Infrastructure.DataAccess;
 using GestorAvaliacao.Infrastructure.DataAccess.Repositories;
 using GestorAvaliacao.Infrastructure.Extensions;
+using FluentMigrator.Runner;
+using System.Reflection;
 
 namespace GestorAvaliacao.Infrastructure
 {
@@ -13,17 +15,14 @@ namespace GestorAvaliacao.Infrastructure
     {
         public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-            var databaseEnviroment = configuration.DataEnvironment();
-
-            if(databaseEnviroment == DatabaseEnvironment.Development)
-                AddDbContext_MySql(services, configuration);
-            else
-                AddDbContext_SqlServer(services, configuration);
-
+ 
+            AddDbContext(services, configuration);
+            AddFluentMigrations(services, configuration);
             AddRepositories(services);
+
         }
 
-        private static void AddDbContext_SqlServer(IServiceCollection services, IConfiguration configuration)
+        private static void AddDbContext(IServiceCollection services, IConfiguration configuration)
         {
             var connectionString = configuration.ConnectionString();
 
@@ -32,22 +31,24 @@ namespace GestorAvaliacao.Infrastructure
                 dbContextOptions.UseSqlServer(connectionString);
             });
         }
-        private static void AddDbContext_MySql(IServiceCollection services, IConfiguration configuration)
-        {
-            var connectionString = configuration.ConnectionString();
-
-            var serverVersion = new MySqlServerVersion(new Version(8,0,36));
-
-            services.AddDbContext<GestorAvaliacaoDBContext>(dbContextOptions =>
-            {
-                dbContextOptions.UseMySql(connectionString, serverVersion);
-            });
-        }
-
+    
         private static void AddRepositories(IServiceCollection services) 
         {
             services.AddScoped<IUserWriteOnlyRepository, UserRepository>();
             services.AddScoped<IUserReadOnlyRepository, UserRepository>();
+        }
+        private static void AddFluentMigrations(IServiceCollection services, IConfiguration configuration)
+        {
+            var connectionString = configuration.ConnectionString();
+
+            services.AddFluentMigratorCore().ConfigureRunner(options =>
+            {
+                options
+                .AddSqlServer()
+                .WithGlobalConnectionString(connectionString)
+                .ScanIn(Assembly.Load("GestorAvaliacao.Infrastructure")).For.All(); 
+            });
+
         }
 
     }

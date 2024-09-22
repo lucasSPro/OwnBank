@@ -24,11 +24,13 @@ namespace GestorAvaliacao.Infrastructure.Extensions
             switch (databaseEnvironment)
             {
                 case DatabaseEnvironment.Development:
-                return configuration.GetConnectionString("Development")!;
+                    return configuration.GetConnectionString("Development")!;
                 case DatabaseEnvironment.Homologation:
-                return configuration.GetConnectionString("Homologation")!;
+                    return configuration.GetConnectionString("Homologation")!;
+                case DatabaseEnvironment.Prodution:
+                    return configuration.GetConnectionString("Prodution")!;
                 default:
-                return configuration.GetConnectionString("Homologation")!;
+                    return configuration.GetConnectionString("Development")!;
             }
         }
     }

@@ -4,6 +4,7 @@ using GestorAvaliacao.Application;
 using GestorAvaliacao.Infrastructure;
 using GestorAvaliacao.Infrastructure.Extensions;
 using GestorAvaliacao.Infrastructure.Migrations;
+using Microsoft.Extensions.DependencyInjection;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -43,7 +44,8 @@ app.Run();
 
 void MigrateDatabase()
 {
-    var databaseEnvironment = builder.Configuration.DataEnvironment();
     var connectionString = builder.Configuration.ConnectionString();
-    DatabaseMigration.Migrate(connectionString, databaseEnvironment);
+    var serviceScope = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope();
+
+    DatabaseMigration.Migrate(connectionString, serviceScope.ServiceProvider);
 }

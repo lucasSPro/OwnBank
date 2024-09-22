@@ -1,5 +1,4 @@
-﻿
-namespace GestorAvaliacao.Infrastructure.Migrations.Versions
+﻿namespace GestorAvaliacao.Infrastructure.Migrations
 {
     public abstract class DatabaseVersions
     {
