@@ -46,7 +46,7 @@ namespace Validador.User.Register
                   .And.Contain(e => e.ErrorMessage.Equals(ResourceMessagesExceptions.EMAIL_EMPTY));
         }
         [Fact]
-        public void Error_Email_Invalid()
+        public void Error_Email_invalid()
         {
             var validator = new RegisterUserValidator();
             var request = RequestRegisterUserJsonBuilder.Build();
@@ -58,6 +58,24 @@ namespace Validador.User.Register
             result.Errors.Should().ContainSingle()
                   .And.Contain(e => e.ErrorMessage.Equals(ResourceMessagesExceptions.EMAIL_VALID));
         }
-       
+        [Theory]
+        [InlineData(0)]
+        [InlineData(1)]
+        [InlineData(2)]
+        [InlineData(3)]
+        [InlineData(4)]
+        [InlineData(5)]
+        public void Error_Email_Invalid_Requirement_Length(int passwordLength)
+        {
+            var validator = new RegisterUserValidator();
+            var request = RequestRegisterUserJsonBuilder.Build(passwordLength);
+
+            var result = validator.Validate(request);
+
+            result.IsValid.Should().BeFalse();
+            result.Errors.Should().ContainSingle()
+                  .And.Contain(e => e.ErrorMessage.Equals(ResourceMessagesExceptions.PASSWORD_MIN_LENGHT));
+        }
+
     }
 }
