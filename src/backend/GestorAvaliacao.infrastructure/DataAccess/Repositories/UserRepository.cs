@@ -13,16 +13,11 @@ namespace GestorAvaliacao.Infrastructure.DataAccess.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task Add(User user) 
-        {
-            await _dbContext.Users.AddAsync(user);
-            await _dbContext.SaveChangesAsync();
-        }
-
+        public async Task Add(User user) => await _dbContext.User.AddAsync(user);
 
         public async Task<bool> ExistActiveUserWithEmail(string email)
         {
-            return await _dbContext.Users.AnyAsync(user => user.Email.Equals(email) );
+            return await _dbContext.User.AnyAsync(user => user.Email.Equals(email) );
         }
     }
 }

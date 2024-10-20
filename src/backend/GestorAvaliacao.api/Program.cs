@@ -4,8 +4,6 @@ using GestorAvaliacao.Application;
 using GestorAvaliacao.Infrastructure;
 using GestorAvaliacao.Infrastructure.Extensions;
 using GestorAvaliacao.Infrastructure.Migrations;
-using Microsoft.Extensions.DependencyInjection;
-
 
 var builder = WebApplication.CreateBuilder(args);
 

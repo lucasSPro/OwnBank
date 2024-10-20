@@ -11,7 +11,7 @@ namespace GestorAvaliacao.Infrastructure.Migrations.Versions
             return Create.Table(tableName)
                 .WithColumn("Id").AsInt64().PrimaryKey().Identity()
                 .WithColumn("CreatedOn").AsDateTime().NotNullable()
-                .WithColumn("Ativo").AsBoolean().NotNullable();
+                .WithColumn("Active").AsBoolean().NotNullable();
         }
     }
 }

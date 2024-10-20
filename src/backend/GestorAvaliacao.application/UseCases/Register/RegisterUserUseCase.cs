@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using GestorAvaliacao.Application.Services.Cryptography;
 using GestorAvaliacao.Communication.Request;
+using GestorAvaliacao.Communication.Responses;
+using GestorAvaliacao.Domain.Repositories;
 using GestorAvaliacao.Domain.Repositories.User;
 using GestorAvaliacao.Exceptions;
 using GestorAvaliacao.Exceptions.ExceptionBase;
@@ -12,21 +14,24 @@ namespace GestorAvaliacao.Application.UseCases.Register
     {
         private readonly IUserReadOnlyRepository _userReadOnlyRepository;
         private readonly IUserWriteOnlyRepository _userWriteOnlyRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly PasswordEncripter _passwordEncripter;
         private readonly IMapper _mapper;
         public RegisterUserUseCase(
             IUserReadOnlyRepository userReadOnlyRepository, 
             IUserWriteOnlyRepository userWriteOnlyRepository,
+            IUnitOfWork unitOfWork,
             PasswordEncripter passwordEncripter,
             IMapper mapper
             )
         {
             _userReadOnlyRepository = userReadOnlyRepository;
             _userWriteOnlyRepository = userWriteOnlyRepository;
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
             _passwordEncripter = passwordEncripter;
         }
-        public async Task<RequestRegisterUserJson> Execute(RequestRegisterUserJson request)
+        public async Task<ResponseRegisteredUserJson> Execute(RequestRegisterUserJson request)
         {
 
             await Validate(request);
@@ -36,8 +41,10 @@ namespace GestorAvaliacao.Application.UseCases.Register
             user.Password =  _passwordEncripter.Encrypt(request.Password);
 
             await _userWriteOnlyRepository.Add(user);
+
+            await _unitOfWork.Commit();
            
-            return new RequestRegisterUserJson { Name = request.Name };
+            return new ResponseRegisteredUserJson { Name = user.Name };
         }
 
         private async Task Validate(RequestRegisterUserJson request)
@@ -49,7 +56,7 @@ namespace GestorAvaliacao.Application.UseCases.Register
 
             if (emailExist)
             {
-                result.Errors.Add(new FluentValidation.Results.ValidationFailure(string.Empty, ResourceMessagesExceptions.EMAIL_EXISTING));
+                result.Errors.Add(new FluentValidation.Results.ValidationFailure(string.Empty, ResourceMessagesException.EMAIL_EXISTING));
             }
 
             if (!result.IsValid)

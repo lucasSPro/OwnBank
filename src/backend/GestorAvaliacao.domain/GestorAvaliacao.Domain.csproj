@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\shared\GestorAvaliacao.communication\GestorAvaliacao.Communication.csproj" />
-    <ProjectReference Include="..\..\shared\ownbank.communication\GestorAvaliacao.Communication.csproj" />
   </ItemGroup>
 
 </Project>

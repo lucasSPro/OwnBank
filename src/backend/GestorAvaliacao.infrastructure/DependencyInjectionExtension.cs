@@ -1,13 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using GestorAvaliacao.Domain.Enums;
 using GestorAvaliacao.Domain.Repositories.User;
 using GestorAvaliacao.Infrastructure.DataAccess;
 using GestorAvaliacao.Infrastructure.DataAccess.Repositories;
 using GestorAvaliacao.Infrastructure.Extensions;
 using FluentMigrator.Runner;
 using System.Reflection;
+using GestorAvaliacao.Domain.Repositories;
 
 namespace GestorAvaliacao.Infrastructure
 {
@@ -34,6 +34,7 @@ namespace GestorAvaliacao.Infrastructure
     
         private static void AddRepositories(IServiceCollection services) 
         {
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IUserWriteOnlyRepository, UserRepository>();
             services.AddScoped<IUserReadOnlyRepository, UserRepository>();
         }

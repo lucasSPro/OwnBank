@@ -22,14 +22,14 @@ namespace GestorAvaliacao.Exceptions {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class ResourceMessagesExceptions {
+    public class ResourceMessagesException {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ResourceMessagesExceptions() {
+        internal ResourceMessagesException() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace GestorAvaliacao.Exceptions {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GestorAvaliacao.Exceptions.ResourceMessagesExceptions", typeof(ResourceMessagesExceptions).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GestorAvaliacao.Exceptions.ResourceMessagesException", typeof(ResourceMessagesException).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -70,7 +70,7 @@ namespace GestorAvaliacao.Exceptions {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Email existing..
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Email existing in our base..
         /// </summary>
         public static string EMAIL_EXISTING {
             get {

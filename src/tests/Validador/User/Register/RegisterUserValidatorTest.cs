@@ -18,7 +18,6 @@ namespace Validador.User.Register
 
             result.IsValid.Should().BeTrue();
         }
-
         [Fact]
         public void Error_Name_Empty()
         {
@@ -30,7 +29,7 @@ namespace Validador.User.Register
 
             result.IsValid.Should().BeFalse();
             result.Errors.Should().ContainSingle()
-                  .And.Contain(e => e.ErrorMessage.Equals(ResourceMessagesExceptions.NAME_EMPTY));
+                  .And.Contain(e => e.ErrorMessage.Equals(ResourceMessagesException.NAME_EMPTY));
         }
         [Fact]
         public void Error_Email_Empty()
@@ -43,7 +42,7 @@ namespace Validador.User.Register
 
             result.IsValid.Should().BeFalse();
             result.Errors.Should().ContainSingle()
-                  .And.Contain(e => e.ErrorMessage.Equals(ResourceMessagesExceptions.EMAIL_EMPTY));
+                  .And.Contain(e => e.ErrorMessage.Equals(ResourceMessagesException.EMAIL_EMPTY));
         }
         [Fact]
         public void Error_Email_invalid()
@@ -56,7 +55,7 @@ namespace Validador.User.Register
 
             result.IsValid.Should().BeFalse();
             result.Errors.Should().ContainSingle()
-                  .And.Contain(e => e.ErrorMessage.Equals(ResourceMessagesExceptions.EMAIL_VALID));
+                  .And.Contain(e => e.ErrorMessage.Equals(ResourceMessagesException.EMAIL_VALID));
         }
         [Theory]
         [InlineData(0)]
@@ -65,7 +64,7 @@ namespace Validador.User.Register
         [InlineData(3)]
         [InlineData(4)]
         [InlineData(5)]
-        public void Error_Email_Invalid_Requirement_Length(int passwordLength)
+        public void Error_Password_Invalid_Requirement_Length(int passwordLength)
         {
             var validator = new RegisterUserValidator();
             var request = RequestRegisterUserJsonBuilder.Build(passwordLength);
@@ -74,8 +73,7 @@ namespace Validador.User.Register
 
             result.IsValid.Should().BeFalse();
             result.Errors.Should().ContainSingle()
-                  .And.Contain(e => e.ErrorMessage.Equals(ResourceMessagesExceptions.PASSWORD_MIN_LENGHT));
+                  .And.Contain(e => e.ErrorMessage.Equals(ResourceMessagesException.PASSWORD_MIN_LENGHT));
         }
-
     }
 }

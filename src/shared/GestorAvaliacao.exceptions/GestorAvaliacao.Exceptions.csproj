@@ -7,17 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Update="ResourceMessagesExceptions.Designer.cs">
+    <Compile Update="ResourceMessagesException.Designer.cs">
+      <DependentUpon>ResourceMessagesException.resx</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>ResourceMessagesExceptions.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="ResourceMessagesExceptions.resx">
+    <EmbeddedResource Update="ResourceMessagesException.resx">
+      <LastGenOutput>ResourceMessagesException.Designer.cs</LastGenOutput>
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>ResourceMessagesExceptions.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

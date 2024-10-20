@@ -15,10 +15,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\shared\GestorAvaliacao.communication\GestorAvaliacao.Communication.csproj" />
     <ProjectReference Include="..\..\shared\GestorAvaliacao.exceptions\GestorAvaliacao.Exceptions.csproj" />
-    <ProjectReference Include="..\..\shared\ownbank.communication\GestorAvaliacao.Communication.csproj" />
-    <ProjectReference Include="..\..\shared\ownbank.exceptions\GestorAvaliacao.Exceptions.csproj" />
     <ProjectReference Include="..\GestorAvaliacao.domain\GestorAvaliacao.Domain.csproj" />
-    <ProjectReference Include="..\ownbank.domain\GestorAvaliacao.Domain.csproj" />
+
   </ItemGroup>
 
 </Project>

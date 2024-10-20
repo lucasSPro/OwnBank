@@ -1,9 +1,10 @@
 ﻿using GestorAvaliacao.Communication.Request;
+using GestorAvaliacao.Communication.Responses;
 
 namespace GestorAvaliacao.Application.UseCases.Register
 {
     public interface IRegisterUserUseCase
     {
-        public Task<RequestRegisterUserJson> Execute(RequestRegisterUserJson request);
+        public Task<ResponseRegisteredUserJson> Execute(RequestRegisterUserJson request);
     }
 }
