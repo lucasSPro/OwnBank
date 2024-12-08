@@ -15,10 +15,11 @@ namespace GestorAvaliacao.Infrastructure
     {
         public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
- 
+            if (configuration.IsUnitTestEnviroment())
+                return;
+            AddRepositories(services);
             AddDbContext(services, configuration);
             AddFluentMigrations(services, configuration);
-            AddRepositories(services);
 
         }
 

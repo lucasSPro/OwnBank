@@ -1,15 +1,14 @@
 ﻿using GestorAvaliacao.Domain.Enums;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GestorAvaliacao.Infrastructure.Extensions
 {
     public static class ConfigurationExtension
     {
+        public static bool IsUnitTestEnviroment(this IConfiguration configuration) {
+            var retorno = configuration.GetValue<bool>("Settings:InMemoryTest"); //"InMemoryTest": true,
+            return retorno;
+        }
 
         public static DatabaseEnvironment DataEnvironment(this IConfiguration configuration)
         {
