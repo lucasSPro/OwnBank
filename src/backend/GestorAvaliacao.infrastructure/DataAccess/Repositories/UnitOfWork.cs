@@ -10,20 +10,16 @@ namespace GestorAvaliacao.Infrastructure.DataAccess.Repositories
 
         public async Task Commit()
         {
-            using (var transaction = await _dbContext.Database.BeginTransactionAsync())
+            try
             {
-                try
-                {
-                    await _dbContext.SaveChangesAsync();
-                    await transaction.CommitAsync();
-                }
-                catch (Exception ex)
-                {
-                    await transaction.RollbackAsync();
-                    throw;
-                }
+                await _dbContext.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw;
             }
         }
+
 
     }
 }
