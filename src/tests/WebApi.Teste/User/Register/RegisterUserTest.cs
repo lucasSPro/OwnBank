@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text.Json;
 using UtilidadesComunsTestes.Requests;
@@ -16,8 +17,9 @@ namespace WebApi.Teste.User.Register
         {
             var request = RequestRegisterUserJsonBuilder.Build();
 
-            _httpClient.DefaultRequestHeaders.Add("Accept-Language", "en-US");
-
+            _httpClient.DefaultRequestHeaders.AcceptLanguage.Clear();
+            _httpClient.DefaultRequestHeaders.AcceptLanguage.Add(new StringWithQualityHeaderValue("en"));
+          
             var response = await _httpClient.PostAsJsonAsync("User", request);
 
             response.StatusCode.Should().Be(System.Net.HttpStatusCode.Created);

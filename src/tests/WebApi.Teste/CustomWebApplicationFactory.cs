@@ -1,4 +1,6 @@
-﻿using GestorAvaliacao.Infrastructure.DataAccess;
+﻿using GestorAvaliacao.Api.Middleware;
+using GestorAvaliacao.Infrastructure.DataAccess;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
@@ -19,13 +21,14 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
                     services.Remove(descriptor); 
                 }
 
-            var provider = services.AddEntityFrameworkInMemoryDatabase().BuildServiceProvider();
+                var provider = services.AddEntityFrameworkInMemoryDatabase().BuildServiceProvider();
 
-            services.AddDbContext<GestorAvaliacaoDBContext>(options =>
-            {
-                options.UseInMemoryDatabase("InMemoryDbForTesting");
-                options.UseInternalServiceProvider(provider);
+                services.AddDbContext<GestorAvaliacaoDBContext>(options =>
+                {
+                    options.UseInMemoryDatabase("InMemoryDbForTesting");
+                    options.UseInternalServiceProvider(provider);
+                });
+
             });
-        });
     }
 }
